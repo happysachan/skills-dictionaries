@@ -105,18 +105,18 @@ def find_unique_common_items(list1, list2):
         [1, 2]
 
     """
-    list1_len = len(list1)
-    list2_len = len(list2)
+
     common_list = []
 
-    for i in range(list1_len):
-        list1_item = list1[i]
-        for i in range(list2_len):
-            if list1_item == list2[i]:
-                common_list.append(list1_item)
+    # for list1_item in list1:
+    #     for list2_item in list2:
+    #         if list1_item == list2_item:
+    #             common_list.append(list1_item)
+
+
+    [common_list.append(list1_item) for list1_item in list1 for list2_item in list2 if list1_item == list2_item]
 
     unique_items_list = list(set(common_list))
-
 
     return unique_items_list
 
