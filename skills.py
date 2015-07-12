@@ -1,5 +1,7 @@
 # To work on the advanced problems, set to True
-ADVANCED = False
+ADVANCED = True
+
+import re
 
 
 def count_unique(input_string):
@@ -339,7 +341,7 @@ def get_pirate_talk(phrase):
 
 def adv_get_top_letter(input_string):
     """Given an input string, return a list of letter(s) which
-    appear(s) the most the input string.
+    appear(s) the most in the input string.
 
     If there is a tie, the order of the letters in the returned
     list should be alphabetical.
@@ -358,9 +360,21 @@ def adv_get_top_letter(input_string):
 
     """
 
-    
+    char_count_dict = {}
 
-    return ''
+    alpha_char_pattern = '\w+?'
+
+    for letter in re.findall(alpha_char_pattern, input_string):
+        letter_freq = input_string.count(letter)
+        if letter_freq in char_count_dict:
+            char_count_dict[letter_freq].append(letter)
+        else:
+            char_count_dict[letter_freq] = [letter]
+    
+    sorted_keys = sorted(char_count_dict)
+
+
+    return list(set(char_count_dict[sorted_keys[-1]]))
 
 # def adv_alpha_sort_by_word_length(words):
 #     """    
