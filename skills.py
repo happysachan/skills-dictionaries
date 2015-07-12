@@ -70,17 +70,15 @@ def find_common_items(list1, list2):
 
     """
 
-    list1_len = len(list1)
-    list2_len = len(list2)
     common_list = []
 
-    for i in range(list1_len):
-        list1_item = list1[i]
-        for i in range(list2_len):
-            if list1_item == list2[i]:
-                common_list.append(list1_item)
+    # for list1_item in list1:
+    #     for list2_item in list2:
+    #         if list1_item == list2_item:
+    #             common_list.append(list1_item)
 
-    # [common_list.append([list1_item = list1[i] for i in range(list1_len)]) for i in range(list2_len) if list1_item is list2[i]] 
+
+    [common_list.append(list1_item) for list1_item in list1 for list2_item in list2 if list1_item == list2_item]
 
 
     return common_list
