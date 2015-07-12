@@ -173,25 +173,30 @@ def get_sum_zero_pairs(input_list):
 
     return pair_dict
 
-# def remove_duplicates(words):
-#     """Given a list of words, return the list with duplicates removed
-#     without using a Python set.
+def remove_duplicates(words):
+    """Given a list of words, return the list with duplicates removed
+    without using a Python set.
 
-#     For example:
+    For example:
 
-#         >>> sorted(remove_duplicates(
-#         ...     ["rose", "is", "a", "rose", "is", "a", "rose"]))
-#         ['a', 'is', 'rose']
+        >>> sorted(remove_duplicates(
+        ...     ["rose", "is", "a", "rose", "is", "a", "rose"]))
+        ['a', 'is', 'rose']
 
-#     You should treat differently-capitalized words as different:
+    You should treat differently-capitalized words as different:
 
-#         >>> sorted(remove_duplicates(
-#         ...     ["Rose", "is", "a", "rose", "is", "a", "rose"]))
-#         ['Rose', 'a', 'is', 'rose']
+        >>> sorted(remove_duplicates(
+        ...     ["Rose", "is", "a", "rose", "is", "a", "rose"]))
+        ['Rose', 'a', 'is', 'rose']
 
-#     """
+    """
 
-#     return []
+    words_dict = {}
+
+    for word in words:
+        words_dict[word] = "who cares"
+
+    return words_dict
 
 
 def encode(phrase):
@@ -212,12 +217,15 @@ def encode(phrase):
                 "i" : "u"
     }
 
+    new_phrase = ""
+
     for letter in phrase:
         if letter in encode_dict:
             letter = encode_dict[letter]
+        new_phrase += letter
 
 
-    return phrase
+    return new_phrase
 
 
 def sort_by_word_length(words):
@@ -329,28 +337,30 @@ def get_pirate_talk(phrase):
 # ############################################################################
 
 
-# def adv_get_top_letter(input_string):
-#     """Given an input string, return a list of letter(s) which
-#     appear(s) the most the input string.
+def adv_get_top_letter(input_string):
+    """Given an input string, return a list of letter(s) which
+    appear(s) the most the input string.
 
-#     If there is a tie, the order of the letters in the returned
-#     list should be alphabetical.
+    If there is a tie, the order of the letters in the returned
+    list should be alphabetical.
 
-#     For example:
-#         >>> adv_get_top_letter("The rain in spain stays mainly in the plain.")
-#         ['i', 'n']
+    For example:
+        >>> adv_get_top_letter("The rain in spain stays mainly in the plain.")
+        ['i', 'n']
 
-#     If there is not a tie, simply return a list with one item.
+    If there is not a tie, simply return a list with one item.
 
-#     For example:
-#         >>> adv_get_top_letter("Shake it off, shake it off. Shake it off, Shake it off.")
-#         ['f']
+    For example:
+        >>> adv_get_top_letter("Shake it off, shake it off. Shake it off, Shake it off.")
+        ['f']
 
-#     Spaces do not count as letters.
+    Spaces do not count as letters.
 
-#     """
+    """
 
-#     return ''
+    
+
+    return ''
 
 # def adv_alpha_sort_by_word_length(words):
 #     """    
