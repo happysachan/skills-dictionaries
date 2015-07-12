@@ -121,38 +121,57 @@ def find_unique_common_items(list1, list2):
     return unique_items_list
 
 
-# def get_sum_zero_pairs(input_list):
-#     """Given a list of numbers,
-#     return list of x,y number pair lists where x + y == 0.
+def get_sum_zero_pairs(input_list):
+    """Given a list of numbers,
+    return list of x,y number pair lists where x + y == 0.
 
-#     Given a list of numbers, add up each individual pair of numbers.
-#     Return a list of each pair of numbers that adds up to 0.
+    Given a list of numbers, add up each individual pair of numbers.
+    Return a list of each pair of numbers that adds up to 0.
 
 
-#     For example:
+    For example:
 
-#         >>> sort_pairs( get_sum_zero_pairs([1, 2, 3, -2, -1]) )
-#         [[-2, 2], [-1, 1]]
+        >>> sort_pairs( get_sum_zero_pairs([1, 2, 3, -2, -1]) )
+        [[-2, 2], [-1, 1]]
 
-#         >>> sort_pairs( get_sum_zero_pairs([3, -3, 2, 1, -2, -1]) )
-#         [[-3, 3], [-2, 2], [-1, 1]]
+        >>> sort_pairs( get_sum_zero_pairs([3, -3, 2, 1, -2, -1]) )
+        [[-3, 3], [-2, 2], [-1, 1]]
 
-#     This should always be a unique list, even if there are
-#     duplicates in the input list:
+    This should always be a unique list, even if there are
+    duplicates in the input list:
 
-#         >>> sort_pairs( get_sum_zero_pairs([1, 2, 3, -2, -1, 1, 1]) )
-#         [[-2, 2], [-1, 1]]
+        >>> sort_pairs( get_sum_zero_pairs([1, 2, 3, -2, -1, 1, 1]) )
+        [[-2, 2], [-1, 1]]
 
-#     Of course, if there are one or more zeros to pair together,
-#     that's fine, too (even a single zero can pair with itself):
+    Of course, if there are one or more zeros to pair together,
+    that's fine, too (even a single zero can pair with itself):
 
-#         >>> sort_pairs( get_sum_zero_pairs([1, 2, 3, -2, -1, 1, 1, 0]) )
-#         [[-2, 2], [-1, 1], [0, 0]]
+        >>> sort_pairs( get_sum_zero_pairs([1, 2, 3, -2, -1, 1, 1, 0]) )
+        [[-2, 2], [-1, 1], [0, 0]]
 
-#     """
+    """
 
-#     return []
+    pair_dict = {}
 
+    for item in input_list:
+        # print "upper item: ", item
+        item_upper = item
+        for item in input_list:
+            # print "lower item: ", item
+            item_lower = item
+            if item_upper + item_lower == 0:
+                if (item_upper,item_lower) in pair_dict:
+                    # print "165 not adding: item_upper, item_lower: ", item_upper, item_lower
+                    pass
+                elif (item_lower,item_upper) in pair_dict:
+                    pass
+                else:
+                    # print "168 adding : item_upper, item_lower: ", item_upper, item_lower
+                    pair_dict[item_upper,item_lower] = "who cares"  
+
+    # unique_pair_list = list(set(pair_list))
+
+    return pair_dict
 
 # def remove_duplicates(words):
 #     """Given a list of words, return the list with duplicates removed
@@ -175,80 +194,129 @@ def find_unique_common_items(list1, list2):
 #     return []
 
 
-# def encode(phrase):
-#     """Given a phrase, replace all "e" characters with "p",
-#     replace "a" characters with "d", replace "t" characters with "o",
-#     and "i" characters with "u". Return the encoded string.
+def encode(phrase):
+    """Given a phrase, replace all "e" characters with "p",
+    replace "a" characters with "d", replace "t" characters with "o",
+    and "i" characters with "u". Return the encoded string.
 
-#     For example:
+    For example:
 
-#         >>> encode("You are a beautiful, talented, brilliant, powerful musk ox.")
-#         'You drp d bpduouful, odlpnopd, brulludno, powprful musk ox.'
-#     """
-#     return ''
+        >>> encode("You are a beautiful, talented, brilliant, powerful musk ox.")
+        'You drp d bpduouful, odlpnopd, brulludno, powprful musk ox.'
+    """
 
-
-# def sort_by_word_length(words):
-#     """Given list of words, return list of ascending [(len, [words])].
-
-#     Given a list of words, return a list of tuples, ordered by word-length.
-#     Each tuple should have two items--the length of the words for that
-#     word-length, and the list of words of that word length.
-
-#     For example:
-
-#         >>> sort_by_word_length(["ok", "an", "apple", "a", "day"])
-#         [(1, ['a']), (2, ['ok', 'an']), (3, ['day']), (5, ['apple'])]
-
-#     """
-
-#     return []
+    encode_dict = {
+                "e" : "p",
+                "a" : "d",
+                "t" : "o",
+                "i" : "u"
+    }
+    return ''
 
 
-# def get_pirate_talk(phrase):
-#     """Translate phrase to pirate talk.
+def sort_by_word_length(words):
+    """Given list of words, return list of ascending [(len, [words])].
 
-#     Given a phrase, translate each word to the Pirate-speak equivalent.
-#     Words that cannot be translated into Pirate-speak should pass through
-#     unchanged. Return the resulting sentence.
+    Given a list of words, return a list of tuples, ordered by word-length.
+    Each tuple should have two items--the length of the words for that
+    word-length, and the list of words of that word length.
 
-#     Here's a table of English to Pirate translations:
+    For example:
 
-#     English     Pirate
-#     ----------  ----------------
-#     sir         matey
-#     hotel       fleabag inn
-#     student     swabbie
-#     boy         matey
-#     madam       proud beauty
-#     professor   foul blaggart
-#     restaurant  galley
-#     your        yer
-#     excuse      arr
-#     students    swabbies
-#     are         be
-#     lawyer      foul blaggart
-#     the         th'
-#     restroom    head
-#     my          me
-#     hello       avast
-#     is          be
-#     man         matey
+        >>> sort_by_word_length(["ok", "an", "apple", "a", "day"])
+        [(1, ['a']), (2, ['ok', 'an']), (3, ['day']), (5, ['apple'])]
 
-#     For example:
+    """
 
-#         >>> get_pirate_talk("my student is not a man")
-#         'me swabbie be not a matey'
+    word_dict = {}
 
-#     You should treat words with punctuation as if they were different
-#     words:
+    for word in words:
+        word_len = len(word)
+        if word_len in word_dict:
+            word_dict[word_len].append(word)
+        else:
+            word_dict[word_len] = [word]
 
-#         >>> get_pirate_talk("my student is not a man!")
-#         'me swabbie be not a man!'
 
-#     """
+    return word_dict.items()
 
-#     return ""
+
+def get_pirate_talk(phrase):
+    """Translate phrase to pirate talk.
+
+    Given a phrase, translate each word to the Pirate-speak equivalent.
+    Words that cannot be translated into Pirate-speak should pass through
+    unchanged. Return the resulting sentence.
+
+    Here's a table of English to Pirate translations:
+
+    English     Pirate
+    ----------  ----------------
+    sir         matey
+    hotel       fleabag inn
+    student     swabbie
+    boy         matey
+    madam       proud beauty
+    professor   foul blaggart
+    restaurant  galley
+    your        yer
+    excuse      arr
+    students    swabbies
+    are         be
+    lawyer      foul blaggart
+    the         th'
+    restroom    head
+    my          me
+    hello       avast
+    is          be
+    man         matey
+
+    For example:
+
+        >>> get_pirate_talk("my student is not a man")
+        'me swabbie be not a matey'
+
+    You should treat words with punctuation as if they were different
+    words:
+
+        >>> get_pirate_talk("my student is not a man!")
+        'me swabbie be not a man!'
+
+    """
+
+    pirate_dict = {
+        "sir" : "matey",
+        "hotel" : "fleabag inn",
+        "student" : "swabbie",
+        "boy" : "matey",
+        "madam" : "proud beauty",
+        "professor" : "foul blaggart",
+        "restaurant" : "galley",
+        "your" : "yer",
+        "excuse" : "arr",
+        "students" : "swabbies",
+        "are" : "be",
+        "lawyer" : "foul blaggart",
+        "the" : "th'",
+        "restroom" : "head",
+        "my" : "me",
+        "hello" : "avast",
+        "is" : "be",
+        "man" : "matey"
+    }
+
+    word_list = phrase.split()
+
+    pirate_talk_list = []
+
+    for word in word_list:
+        if word in pirate_dict:
+            pirate_word = pirate_dict[word]
+            pirate_talk_list.append(pirate_word)
+        else:
+            pirate_talk_list.append(word)
+
+    return " ".join(pirate_talk_list)
 
 # # End of skills. See below for advanced problems.
 # # To work on them, set ADVANCED=True at the top of this file.
