@@ -114,11 +114,15 @@ def find_unique_common_items(list1, list2):
     #             common_list.append(list1_item)
 
 
-    [common_list.append(list1_item) for list1_item in list1 for list2_item in list2 if list1_item == list2_item]
+    # [common_list.append(list1_item) for list1_item in list1 for list2_item in list2 if list1_item == list2_item]
 
-    unique_items_list = list(set(common_list))
+    set1 = set(list1)
 
-    return unique_items_list
+    set2 = set(list2)
+
+    intersection_set = set1 & set2
+
+    return list(intersection_set)
 
 
 def get_sum_zero_pairs(input_list):
@@ -153,24 +157,17 @@ def get_sum_zero_pairs(input_list):
 
     pair_dict = {}
 
-    for item in input_list:
-        # print "upper item: ", item
-        item_upper = item
-        for item in input_list:
-            # print "lower item: ", item
-            item_lower = item
+    for item_upper in input_list:
+        for item_lower in input_list:
             if item_upper + item_lower == 0:
                 if (item_upper,item_lower) in pair_dict:
-                    # print "165 not adding: item_upper, item_lower: ", item_upper, item_lower
                     pass
                 elif (item_lower,item_upper) in pair_dict:
                     pass
                 else:
-                    # print "168 adding : item_upper, item_lower: ", item_upper, item_lower
                     pair_dict[item_upper,item_lower] = "who cares"  
 
-    # unique_pair_list = list(set(pair_list))
-
+    
     return pair_dict
 
 def remove_duplicates(words):
