@@ -35,10 +35,7 @@ def count_unique(input_string):
     words_dict = {}
 
     for word in words_list:
-        if word in words_dict:
-            words_dict[word] += 1
-        else:
-            words_dict[word] = 1
+        words_dict[word] = words_dict.get(word,0) + 1
 
     return words_dict
 
@@ -167,7 +164,7 @@ def get_sum_zero_pairs(input_list):
                 else:
                     pair_dict[item_upper,item_lower] = "who cares"  
 
-    
+
     return pair_dict
 
 def remove_duplicates(words):
