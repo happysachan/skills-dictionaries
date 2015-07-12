@@ -211,7 +211,13 @@ def encode(phrase):
                 "t" : "o",
                 "i" : "u"
     }
-    return ''
+
+    for letter in phrase:
+        if letter in encode_dict:
+            letter = encode_dict[letter]
+
+
+    return phrase
 
 
 def sort_by_word_length(words):
