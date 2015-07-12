@@ -376,23 +376,34 @@ def adv_get_top_letter(input_string):
 
     return list(set(char_count_dict[sorted_keys[-1]]))
 
-# def adv_alpha_sort_by_word_length(words):
-#     """    
-#     Given a list of words, return a list of tuples, ordered by word-length.
-#     Each tuple should have two items--a number that is a word-length,
-#     and the list of words of that word length. In addition to ordering
-#     the list by word length, order each sub-list of words alphabetically.
-#     Now try doing it with only one call to .sort() or sorted(). What does the
-#     optional "key" argument for .sort() and sorted() do?
+def adv_alpha_sort_by_word_length(words):
+    """    
+    Given a list of words, return a list of tuples, ordered by word-length.
+    Each tuple should have two items--a number that is a word-length,
+    and the list of words of that word length. In addition to ordering
+    the list by word length, order each sub-list of words alphabetically.
+    Now try doing it with only one call to .sort() or sorted(). What does the
+    optional "key" argument for .sort() and sorted() do?
 
-#     For example:
+    For example:
 
-#         >>> adv_alpha_sort_by_word_length(["ok", "an", "apple", "a", "day"])
-#         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
+        >>> adv_alpha_sort_by_word_length(["ok", "an", "apple", "a", "day"])
+        [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
 
-#     """
+    """
+    word_len_dict = {}
 
-#     return []
+    for word in words:
+        word_len = len(word)
+        if word_len in word_len_dict:
+            word_len_dict[word_len].append(word)
+            word_len_dict[word_len] = sorted(word_len_dict[word_len])
+        else:
+            word_len_dict[word_len] = [word]
+
+    # import pdb; pdb.set_trace()
+
+    return word_len_dict.items()
 
 
 # ##############################################################################
